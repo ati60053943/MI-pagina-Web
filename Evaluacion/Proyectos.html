@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Proyectos desarrollados por Jesus Huaman Purihuaman">
+    <title>Proyectos | Jesus Huaman Purihuaman</title>
+    
+    <link rel="icon" type="image/x-icon" href="img/logo.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================================
+           ESTILOS COMPATIBLES CON INDEX.HTML
+           ========================================================= */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            background-color: #f4f6f9; 
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 1. BARRA LATERAL (ASIDE) */
+        aside {
+            width: 250px; 
+            background: linear-gradient(180deg, #1a365d 0%, #2b6cb0 100%);
+            color: #ffffff;
+            height: 100vh;
+            padding: 25px 15px;
+            box-shadow: 3px 0 10px rgba(0,0,0,0.15);
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        aside h2 {
+            text-align: center;
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* Botón opcional para ocultar/mostrar menú */
+        .btn-toggle-sidebar {
+            position: absolute;
+            top: 20px;
+            right: -14px;
+            width: 28px;
+            height: 28px;
+            background-color: #1a365d;
+            color: #ffffff;
+            border: 2px solid #f4f6f9;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1010;
+        }
+
+        aside nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 12px 15px;
+            margin: 4px 0;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        aside nav a i {
+            font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        aside nav a:hover, 
+        aside nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        /* Estado Colapsado del Sidebar */
+        aside.collapsed {
+            width: 70px;
+            padding: 25px 8px;
+        }
+
+        aside.collapsed h2 span,
+        aside.collapsed nav a span {
+            display: none;
+        }
+
+        aside.collapsed nav a {
+            justify-content: center;
+            padding: 12px 0;
+        }
+
+        /* 2. CONTENIDO PRINCIPAL */
+        .content {
+            margin-left: 250px;
+            padding: 35px;
+            flex: 1;
+            width: calc(100% - 250px);
+            transition: margin-left 0.3s ease, width 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .content.expanded {
+            margin-left: 70px;
+            width: calc(100% - 70px);
+        }
+
+        /* ENCABEZADO / BANNER */
+        header { 
+            background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        header h1 { 
+            font-size: 2rem; 
+            margin-bottom: 8px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        header p { 
+            opacity: 0.9; 
+            font-size: 1rem; 
+        }
+
+        /* CONTENEDOR BLANCO DE PROYECTOS */
+        main { 
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+        }
+
+        main h2.section-title { 
+            color: #1a365d; 
+            font-size: 1.4rem;
+            margin-bottom: 25px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 12px;
+        }
+
+        /* GRILLA DE TARJETAS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .project-icon {
+            color: #2b6cb0;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .project-card h3 {
+            color: #1a365d;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #4a5568;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        /* ETIQUETAS TÉCNICAS */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            border: 1px solid #bee3f8;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        /* PIE DE PÁGINA */
+        footer { 
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9em;
+            color: #718096;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { 
+                width: 100%; 
+                height: auto; 
+                position: relative; 
+            }
+            aside.collapsed {
+                width: 100%;
+            }
+            .content,
+            .content.expanded { 
+                margin-left: 0; 
+                width: 100%;
+                padding: 20px; 
+            }
+            .btn-toggle-sidebar {
+                display: none; /* Ocultar toggle en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA LATERAL -->
+    <aside id="sidebar">
+        <button id="toggleSidebar" class="btn-toggle-sidebar" title="Ocultar/Mostrar menú">
+            <i class="fa-solid fa-chevron-left" id="toggleIcon"></i>
+        </button>
+
+        <h2><i class="fa-solid fa-user-graduate"></i> <span>Jesus Huaman</span></h2>
+        <nav>
+             <a href="index .html"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="galeria .html"><i class="fa-solid fa-images"></i> Galería</a>
+            <a href="contacto .html"><i class="fa-solid fa-envelope"></i> Contacto</a>
+            <a href="Contactame.html"><i class="fa-solid fa-envelope"></i> Contactame</a>
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="content" id="mainContent">
+        <header>
+            <h1><i class="fa-solid fa-laptop-code"></i> Mis Proyectos</h1>
+            <p>Una muestra de mis trabajos, prácticas y desarrollos tecnológicos.</p>
+        </header>
+
+        <main>
+            <h2 class="section-title"><i class="fa-solid fa-folder-open"></i> Proyectos Realizados</h2>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h3>Web para Negocios</h3>
+                    <p>Desarrollo de páginas web corporativas para negocios, mostrando información detallada de sus productos, servicios y formularios de contacto optimizados.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">Diseño Responsivo</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3>Guía de Desarrollo Web</h3>
+                    <p>Creación de una página web educativa con información detallada y tutoriales sobre la creación de sitios web, facilitando el aprendizaje de nuevos desarrolladores.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">UI/UX</span>
+                        <span class="tech-tag">Documentación</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h3>Sistema de Gestión</h3>
+                    <p>Prototipo de aplicación web para la administración de bases de datos y registros, aplicando lógica de programación y estructuras de almacenamiento.</p>
+                    <div class="tech-tags">
+                        <span class="tech-tag">SQL</span>
+                        <span class="tech-tag">Backend</span>
+                        <span class="tech-tag">Lógica</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Jesus Huaman Purihuaman - Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Lógica para Ocultar / Mostrar Menú Lateral
+        const toggleBtn = document.getElementById('toggleSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('mainContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('collapsed');
+                content.classList.toggle('expanded');
+                
+                if (sidebar.classList.contains('collapsed')) {
+                    toggleIcon.className = 'fa-solid fa-chevron-right';
+                } else {
+                    toggleIcon.className = 'fa-solid fa-chevron-left';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

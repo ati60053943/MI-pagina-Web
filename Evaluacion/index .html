@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sitio web personal y portafolio estudiantil de Jesus Huaman Purihuaman">
+    <title>Inicio | Jesus Huaman Purihuaman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            background-color: #f4f6f9; 
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Barra Lateral */
+        aside {
+            width: 250px; 
+            background: linear-gradient(180deg, #1a365d 0%, #2b6cb0 100%);
+            color: #ffffff;
+            height: 100vh;
+            padding: 25px 15px;
+            box-shadow: 3px 0 10px rgba(0,0,0,0.15);
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        aside h2 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        aside nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 12px 15px;
+            margin: 6px 0;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        aside nav a:hover, aside nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        /* Contenido Principal */
+        .content {
+            margin-left: 250px;
+            padding: 35px;
+            flex: 1;
+            max-width: 900px;
+        }
+        header { 
+            background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        header h1 { font-size: 2rem; margin-bottom: 8px; }
+        header p { opacity: 0.9; font-size: 1rem; }
+
+        main { 
+            background: white;
+            padding: 30px;
+            margin-top: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+        }
+        main h2 { color: #1a365d; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        main h3 { color: #2b6cb0; margin: 20px 0 10px 0; display: flex; align-items: center; gap: 10px; }
+        ul { padding-left: 20px; }
+        ul li { margin-bottom: 8px; }
+
+        .media-box {
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        audio {
+            width: 100%;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        footer { 
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px 0;
+            font-size: 0.9em;
+            color: #718096;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            aside { width: 100%; height: auto; position: relative; }
+            .content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside>
+        <h2><i class="fa-solid fa-user-graduate"></i> Jesus Huaman</h2>
+        <nav>
+            <a href="index .html"><i class="fa-solid fa-house"></i> Inicio</a>
+          <a href="galeria .html"><i class="fa-solid fa-images"></i> Galería</a>
+          <a href="sobre .html"><i class="fa-solid fa-envelope"></i> Sobre mi</a>
+          <a href="contacto .html"><i class="fa-solid fa-envelope"></i> contacto</a>
+          <a href="Proyectos.html"><i class="fa-solid fa-envelope"></i> Proyectos</a>
+        </nav>
+    </aside>
+
+    <div class="content">
+        <header>
+            <h1>Bienvenido a mi portafolio</h1>
+            <p>Estudiante de Educación Superior | Desarrollo Web & Tecnología</p>
+        </header>
+
+        <main>
+            <h2><i class="fa-solid fa-handshake"></i> ¡Hola!</h2>
+            <p>Bienvenido a mi sitio web personal. Soy <strong>Jesus Huaman Purihuaman</strong>, estudiante enfocado en el desarrollo de habilidades técnicas y profesionales.</p>
+            
+            <h3><i class="fa-solid fa-bullseye"></i> Propósito del Sitio</h3>
+            <ul>
+                <li>Presentar mis proyectos y trabajos académicos.</li>
+                <li>Compartir mi perfil e información de contacto.</li>
+                <li>Demostrar mis avances en desarrollo web.</li>
+            </ul>
+        </main>
+
+        <div class="media-box">
+            <img src="D:\JESUS HUAMAN P TM\FUNDAMENTO DE PROGRAMACION\Evaluacion-20261014T124826Z-1-001\Evaluacion\fotos\7.jpg" alt="Imagen ilustrativa de proyectos">
+        <audio controls preload="metadata">
+            <source src="D:\JESUS HUAMAN P TM\FUNDAMENTO DE PROGRAMACION\Evaluacion-20261014T124826Z-1-001\Evaluacion\audio\AUDIO.mp3" type="audio/mp3">
+            Tu navegador no soporta el elemento de audio HTML5.
+        </audio>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Jesus Huaman Purihuaman - Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
